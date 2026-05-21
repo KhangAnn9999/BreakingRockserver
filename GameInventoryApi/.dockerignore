@@ -1,0 +1,11 @@
+bin/
+obj/
+*.user
+*.vs/
+.vs/
+*.db
+*.bak
+*.log
+**/Properties/launchSettings.json
+.dockerignore
+Dockerfile
