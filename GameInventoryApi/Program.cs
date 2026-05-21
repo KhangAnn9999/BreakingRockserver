@@ -85,6 +85,7 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapGet("/", () => Results.Redirect("/swagger/index.html"));
 app.MapControllers();
 
 // Tự động sinh dữ liệu ảo (Seed Data) mỗi lần bật Server chạy thử
