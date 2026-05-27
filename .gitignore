@@ -1,0 +1,11 @@
+## Các thư mục sinh ra khi chạy debug (Cần xóa)
+bin/
+obj/
+
+## Thư mục cấu hình của IDE
+.vs/
+.vscode/
+
+## File cấu hình cá nhân hoặc log
+*.user
+*.suo
