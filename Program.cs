@@ -83,9 +83,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
-
-app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
@@ -97,4 +96,6 @@ using (var scope = app.Services.CreateScope())
     await SeedData.InitializeAsync(database);
 }
 
-app.Run();
+// Lắng nghe trên port từ environment variable hoặc mặc định 8080
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Run($"http://0.0.0.0:{port}");
