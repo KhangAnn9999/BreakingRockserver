@@ -1,0 +1,72 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vsconfig
+
+# Build outputs
+bin/
+obj/
+/packages/
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# Documentation
+README.md
+*.md
+# Directories
+**/.git
+**/.gitignore
+**/.vs
+**/.vscode
+**/node_modules
+**/bin
+**/obj
+**/Migrations
+
+# Files
+.DS_Store
+*.log
+*.swp
+*.swo
+*~
+.env
+.env.local
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build artifacts
+**/dist
+**/build
+**/out
+
+# Documentation
+**/docs
+**/README.md
+.gitignore
