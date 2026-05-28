@@ -79,12 +79,16 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+// Enable Swagger trên mọi environment
+app.UseSwagger();
+app.UseSwaggerUI();
+
+// Chỉ dùng HTTPS redirect trên Development
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
     app.UseHttpsRedirection();
 }
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
