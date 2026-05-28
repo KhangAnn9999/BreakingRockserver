@@ -79,16 +79,22 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+// Enable Swagger trên mọi environment
+app.UseSwagger();
+app.UseSwaggerUI();
+
+// Chỉ dùng HTTPS redirect trên Development
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
 
-app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+// Redirect root path về Swagger
+app.MapGet("/", () => Results.Redirect("/swagger/index.html"));
 
 // Tự động sinh dữ liệu ảo (Seed Data) mỗi lần bật Server chạy thử
 using (var scope = app.Services.CreateScope())
@@ -97,4 +103,6 @@ using (var scope = app.Services.CreateScope())
     await SeedData.InitializeAsync(database);
 }
 
-app.Run();
+// Lắng nghe trên port từ environment variable hoặc mặc định 8080
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Run($"http://0.0.0.0:{port}");

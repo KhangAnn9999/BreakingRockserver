@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: game-inventory-api
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      # Cập nhật giá trị MongoDB nếu cần thiết
+      - MongoDbSettings__ConnectionString=mongodb+srv://AnKhang_dapda_server:ankhang1234@cluster0.cm0fevs.mongodb.net/GameInventoryDb
+      - MongoDbSettings__DatabaseName=GameInventoryDb
+      - JwtSettings__SecretKey=SuperSecretKeyForGNS3012025ChangeInProduction!
+      - JwtSettings__Issuer=GNS301
+      - JwtSettings__Audience=GameClient
+      - JwtSettings__ExpiryInMinutes=1440
+    restart: unless-stopped
+    networks:
+      - game-inventory-network
+
+networks:
+  game-inventory-network:
+    driver: bridge
