@@ -93,6 +93,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
+// Redirect root path về Swagger
+app.MapGet("/", () => Results.Redirect("/swagger/index.html"));
+
 // Tự động sinh dữ liệu ảo (Seed Data) mỗi lần bật Server chạy thử
 using (var scope = app.Services.CreateScope())
 {
